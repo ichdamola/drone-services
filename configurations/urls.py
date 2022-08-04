@@ -21,6 +21,8 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from drones.urls import router as drone_router
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -38,6 +40,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
+    path("drones/", include(drone_router.urls)),
 ]
 
 if settings.DEBUG:
